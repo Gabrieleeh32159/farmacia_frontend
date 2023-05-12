@@ -6,7 +6,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    const response = fetch("http://localhost:3000/farmacos")
+    fetch("http://localhost:3000/farmacos")
       .then((res) => (res.json()))
       .then((response) => {
         console.log(response)
@@ -15,16 +15,16 @@ function App() {
   },[])
 
   return (
-    <>
-      <h1 className="text-center text-5xl font-bold">Products</h1>
-      <div className="flex flex-wrap gap-5 p-10">
+    <main className="pt-5">
+      <h1 className="text-center text-5xl font-bold">Farmacia</h1>
+      <div className="flex justify-between flex-wrap gap-10 p-10">
         {
           products.map((product) => (
-            <Product key={product.id} product={product} />
+            <Product key={product.id} product={product} setProducts={setProducts}/>
           ))
         }
       </div>
-    </>
+    </main>
   )
 }
 
